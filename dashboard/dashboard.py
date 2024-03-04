@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
 
-def preprocessing(file_path_csv: str):
+def load_data(file_path_csv: str):
     raw_df = pd.read_csv(file_path_csv)
     raw_df['dteday'] = pd.to_datetime(raw_df['dteday'])
 
@@ -41,11 +41,14 @@ def preprocessing(file_path_csv: str):
     return raw_df, df
 
 if __name__ == "__main__":
-    logdayraw_df, logday_df = preprocessing('./data/day.csv')
-    loghourraw_df, loghour_df = preprocessing('./data/hour.csv')
+    logdayraw_df, logday_df = load_data('./data/day.csv')
+    loghourraw_df, loghour_df = load_data('./data/hour.csv')
 
-    """
-    tampilan
-    """
-    st.title("Proyek Analisis Data Dicoding")
+    st.header("Proyek Analisis Data Dicoding")
+    st.markdown("""
+    - **Nama:** Muhammad Ubaidillah
+    - **Email:** devvevan@student.ub.ac.id
+    - **ID Dicoding:** beyubey
+    """)
+
 
