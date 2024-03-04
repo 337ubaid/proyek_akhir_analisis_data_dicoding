@@ -1,7 +1,7 @@
+import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-import streamlit as st
 
 def load_data(file_path_csv: str):
     raw_df = pd.read_csv(file_path_csv)
