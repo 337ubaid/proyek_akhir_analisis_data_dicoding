@@ -1,24 +1,19 @@
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
+# import matplotlib.pyplot as plt
+# import seaborn as sns
 
 def load_data(file_path_csv: str):
     raw_df = pd.read_csv(file_path_csv)
     raw_df['dteday'] = pd.to_datetime(raw_df['dteday'])
 
-    """
-    Membuat dictionary untuk memudahkan membaca data
-    """
     seasons = {1: 'Winter', 2: 'Spring', 3: 'Summer', 4: 'Fall'}
     year = {0: 2011, 1: 2012}
     months = {1: 'January', 2: 'February', 3: 'March', 4: 'April', 5: 'May', 6: 'June', 7: 'July', 8: 'August', 9: 'September', 10: 'October', 11: 'November', 12: 'December'}
     days = {0: 'Sunday', 1: 'Monday', 2: 'Tuesday', 3: 'Wednesday', 4: 'Thursday', 5: 'Friday', 6: 'Saturday'}
     weather_condition = {1: 'Clear', 2: 'Mist', 3: 'Light Snow', 4: 'Heavy Rain'}
 
-    """ 
-    Mengubah beberapa variabel untuk memudahkan membaca data
-    """
+
     raw_df.rename(columns={
         'instant': 'rec_id',
         'dteday': 'datetime',
