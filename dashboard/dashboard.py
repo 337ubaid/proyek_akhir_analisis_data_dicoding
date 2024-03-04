@@ -50,12 +50,20 @@ def show_monthly():
     plt.legend()
     st.pyplot(plt)
 
+def show_all_corr(corr_logdayraw):
+    plt.imshow(corr_logdayraw, cmap='coolwarm', vmin=-1, vmax=1)
+    plt.colorbar()
+    # plt.title('Correlation Heatmap')
+    plt.xticks(range(len(corr_logdayraw.columns)), corr_logdayraw.columns, rotation=90)
+    plt.yticks(range(len(corr_logdayraw.columns)), corr_logdayraw.columns)
+    st.pyplot(plt)
+
 def show_corr(corr_total_count):
-    st.pyplot(plt.imshow(corr_total_count.values.reshape(1, -1), cmap='coolwarm', aspect='auto'))
-    st.pyplot(plt.colorbar())
-    st.pyplot(plt.title('Correlation Rental Amount Heatmap'))
-    st.pyplot(plt.xticks(range(len(corr_total_count.index)), corr_total_count.index, rotation=90))
-    st.pyplot(plt.show())
+    plt.imshow(corr_total_count.values.reshape(1, -1), cmap='coolwarm', aspect='auto')
+    plt.colorbar()
+    # plt.title('Correlation Rental Amount Heatmap')
+    plt.xticks(range(len(corr_total_count.index)), corr_total_count.index, rotation=90)
+    st.pyplot(plt)
 
 if __name__ == "__main__":
     logdayraw_df, logday_df = load_data('./data/day.csv')
@@ -68,8 +76,13 @@ if __name__ == "__main__":
     - **ID Dicoding:** beyubey
     """)
 
-    corr_total_count = logdayraw_df.corr()['total_count']
-    corr_total_count.to_frame()
-    # show_corr(corr_total_count)
     st.subheader('Monthly Record')
     show_monthly() 
+
+    st.subheader('Correlation of All Feature Heatmap')
+    corr_logdayraw = logdayraw_df.corr()
+    show_all_corr(corr_logdayraw)
+
+    st.subheader('Correlation on Total Count')
+    corr_total_count = logdayraw_df.corr()['total_count']
+    show_corr(corr_total_count.to_frame())

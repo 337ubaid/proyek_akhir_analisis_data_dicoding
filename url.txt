@@ -1,1 +1,1 @@
-https://share.streamlit.io/
+https://337ubaid-proyek-akhir-analysis-data-dicoding.streamlit.app/
