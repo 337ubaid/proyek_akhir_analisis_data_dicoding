@@ -71,4 +71,4 @@ if __name__ == "__main__":
     corr_total_count = logdayraw_df.corr()['total_count']
     corr_total_count.to_frame()
     # show_corr(corr_total_count)
-    show_monthly()
+    show_monthly() 
