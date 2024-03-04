@@ -42,7 +42,7 @@ def show_monthly():
     monthly_progress_2012.plot(kind='line', label='2012')
 
     months = {1: 'January', 2: 'February', 3: 'March', 4: 'April', 5: 'May', 6: 'June', 7: 'July', 8: 'August', 9: 'September', 10: 'October', 11: 'November', 12: 'December'}
-    plt.title('Monthly Progress')
+    # plt.title('Monthly Progress')
     plt.xticks(monthly_progress_2011.index, monthly_progress_2011.index.map(months), rotation=90)
     plt.xlabel('Month')
     plt.ylabel('Total Count')
@@ -71,4 +71,5 @@ if __name__ == "__main__":
     corr_total_count = logdayraw_df.corr()['total_count']
     corr_total_count.to_frame()
     # show_corr(corr_total_count)
+    st.subheader('Monthly Record')
     show_monthly() 
